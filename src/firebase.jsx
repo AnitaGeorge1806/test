@@ -2,13 +2,13 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 firebase.initializeApp({
-    apiKey: "AIzaSyBozcM7td3td-4ZtQcZtEuaU22hvr-knTA",
-  authDomain: "test-d9766.firebaseapp.com",
-  projectId: "test-d9766",
-  storageBucket: "test-d9766.firebasestorage.app",
-  messagingSenderId: "265799253612",
-  appId: "1:265799253612:web:0912c96938bad853a9e249",
-  measurementId: "G-GD11ME23PF"
+    apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 });
 
 const auth = firebase.auth();
