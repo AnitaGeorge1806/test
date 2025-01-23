@@ -17,8 +17,8 @@ async function send(){
 
 }
 return(
-    <div>
-        <input type="text" placeholder ="Write Message" value={text}
+    <div className="msgInput">
+        <input className="msgInputBox" type="text" placeholder ="Write Message" value={text}
            onChange={e => setText(e.target.value)}/>
         <button type="button" onClick={()=>send()}>Send</button>
 

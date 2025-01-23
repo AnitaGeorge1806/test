@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import SignIn from './Components/SignIn'
 import { supabase } from './supabase'
 import { auth } from "./firebase"
 import SendMessage from './Components/SendMessage'
 import {useAuthState} from "react-firebase-hooks/auth"
-
+import SignOut from "./Components/SignOut"
 
 function App() {
-  const [count, setCount] = useState(0)
   const [messages, setMessages] = useState({})
   const [user]=useAuthState(auth)
 
@@ -32,13 +29,23 @@ if(!user){
 }
     return (
     <>
-      <SignIn/>
-      <p>{user.email}</p>
-      <p>
-        {JSON.stringify(messages)}
-      </p>
+      {/* <SignIn/>
+      <p>{user.email}</p> */}
+      {/* <p>{JSON.stringify(messages)}</p> */}
+      <div className='msgs'>{
+        messages.map(({id,created_at,sender,message})=>(
+          <div key={id} className={`msg_${sender === user.email ? 'sent':'received'}`} >
+            <p>{sender}</p>
+            <p>{message}</p>
+            <p>{created_at}</p>
+          </div>
+        ))
+
+        }
+      </div>
       <SendMessage/>
-    </>
+      <SignOut/>
+      </>
   )
 }
 
